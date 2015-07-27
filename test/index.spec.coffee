@@ -1,6 +1,6 @@
 require './helpers'
 
-describe "Todolist Item Component", ->
+describe "Point Map", ->
 
   beforeAll ->
     moduleUnderTest = "../src/index.jsx"
