@@ -46,7 +46,7 @@ describe "Todolist Item Component", ->
       @props.handleHover = sinon.spy()
       @subject = renderElement @Component, @props 
     When   -> TestUtils.SimulateNative.mouseOver(@subject);
-    Then   -> expect(@props.handleHover).to.be.calledWith(@props.id, true);
+    Then   -> expect(@props.handleHover).to.be.calledWith(true, @props.id);
 
   describe "click checkbox", ->
     Given  -> 

@@ -45,8 +45,8 @@ class Point extends React.Component {
         cy={cy}
         r={ pointRadius }
         strokeWidth={ strokeWidth }
-        onMouseEnter={ handleHover.bind(this, id, true) }
-        onMouseLeave={ handleHover.bind(this, id, false) }
+        onMouseEnter={ handleHover.bind(this, true, id) }
+        onMouseLeave={ handleHover.bind(this, false, id) }
         onClick={ handleClick.bind(this, id) }
         className={ this.classes() } />
     );
