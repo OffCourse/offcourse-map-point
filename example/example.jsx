@@ -1,52 +1,44 @@
 import React from "react";
-import TodolistItem from "../src/index.jsx";
+import Point from "../src/index.jsx";
 
 class Example extends React.Component {
 
   constructor(props){
     super(props);
-
-    let item = {
-      id: 1,
-      title: "Foo Bar Baz Foo Bar Baz Bar Bar Baz",
-      complete: false,
-      highlight: false
+    this.state = { clicked: false, highlighted: false };
+    this.handlers = {
+      handleHover: this.handleHover.bind(this),
+      handleClick: this.handleClick.bind(this)
     };
-
-    this.state = { item };
   }
-  handleHover(){
-    let { item } = this.state;
-    item.highlight = !item.highlight;
-    this.setState({item});
-  };
-  handleClick(origin, selection){
-    let { item } = this.state;
-    if(origin === "checkbox"){
-      item.complete = !item.complete;
-      this.setState({item});
-    } else {
-      this.setState({selection});
-    }
-  };
+
+  handleHover(id, status){
+    this.setState({ highlighted: status });
+  }
+
+  handleClick(){
+    const { clicked } = this.state;
+    this.setState({ clicked: !clicked });
+  }
 
   render() {
-    let { item, selection } = this.state;
+    const cx = 50;
+    const cy = 50;
+    const strokeWidth = 20;
+    const id = "1";
+    const props = { cx, cy, strokeWidth, id };
+    const { highlighted, clicked } = this.state;
+
     return (
-      <section>
-        <TodolistItem
-          handleTitleClick={ this.handleClick.bind(this, "title") }
-          handleCheckboxClick={ this.handleClick.bind(this, "checkbox") }
-          handleHover={ this.handleHover.bind(this) }
-          parentId={ "1" }
-          item={ item }/>
-          <p>Selection: { JSON.stringify(selection) || "click title" }</p>
-      </section>
+      <div>
+        <svg width={ 100 } height={ 100 }>
+            <Point {...props} {...this.handlers}/>
+        </svg>
+        <p>Higlighted: { `${highlighted}` }</p>
+        <p>Clicked: { `${clicked}` }</p>
+      </div>
     );
   }
 }
 
 export default Example;
-
-/*eslint no-alert:0 */
-/*eslint no-undef:0 */

@@ -1,5 +1,5 @@
 {
-  "name": "offcourse-maps-stop",
+  "name": "offcourse-map-point",
   "version": "0.0.1",
   "description": "A react component for the offcourse todolist item",
   "main": "lib/index.js",
